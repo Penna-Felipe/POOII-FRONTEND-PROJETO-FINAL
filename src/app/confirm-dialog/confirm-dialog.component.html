@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{ data.title || 'Confirmar ação' }}</h2>
+
+<mat-dialog-content>
+    {{ data.message }}
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-button [color]="data.confirmColor || 'warn'" (click)="onConfirm()">
+        {{ data.confirmText || 'Confirmar' }}
+    </button>
+    <button mat-button (click)="onCancel()">
+        {{ data.cancelText || 'Cancelar' }}
+    </button>
+
+</mat-dialog-actions>

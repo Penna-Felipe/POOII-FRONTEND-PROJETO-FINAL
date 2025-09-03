@@ -1,0 +1,29 @@
+<div class="container">
+    <mat-card-title>Cursos</mat-card-title>
+    <br>
+    <mat-card-subtitle><br>Editar</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="input1">
+        <mat-form-field appearance="outline">
+            <mat-label>Id.</mat-label>
+            <input matInput id="idcurso" name="idcurso" disabled [(ngModel)]="curso.idCurso">
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="input2">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome do Curso</mat-label>
+            <input matInput id="nomecurso" name="nomecurso" required [(ngModel)]="curso.nomeCurso">
+            <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="botoes-container">
+        <div class="btn" (click)="atualizar()">
+            Salvar <span class="material-icons">save</span>
+        </div>
+        <div class="btn" (click)="cancelar()">
+            Cancelar <span class="material-icons">cancel</span>
+        </div>
+    </div>
+</div>

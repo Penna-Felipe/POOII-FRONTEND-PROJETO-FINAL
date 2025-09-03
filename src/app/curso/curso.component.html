@@ -1,0 +1,58 @@
+<div class="container">
+
+    <mat-card-title>Cursos</mat-card-title>
+    <br>
+    <mat-card-subtitle><br>Lista Todos</mat-card-subtitle>
+    <mat-divider></mat-divider>
+    <br>
+    <div class="barra_superior">
+        <button mat-raised-button color="primary" class="btn" (click)="novoCurso()">
+            Novo Curso
+            <span class="material-icons">add</span>
+        </button>
+        <mat-form-field class="filter-field">
+            <mat-label>Filtrar cursos</mat-label>
+            <input matInput (keyup)="filtrarCursos($event)" placeholder="Digite para filtrar" />
+        </mat-form-field>
+    </div>
+    <table mat-table [dataSource]="cursos" matSort>
+
+        <ng-container matColumnDef="idCurso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let element">{{ element.idCurso }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeCurso">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome do Curso</th>
+            <td mat-cell *matCellDef="let element">{{ element.nomeCurso }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> Update </th>
+            <td mat-cell *matCellDef="let curso">
+                <button mat-icon-button color="edit" (click)="editarCurso(curso)">
+                    <mat-icon class="mat-18">edit</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let curso">
+                <button mat-icon-button color="delete" (click)="deletarCurso(curso)">
+                    <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Header e Linhas -->
+        <tr mat-header-row *matHeaderRowDef="displayedCursos"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedCursos;"></tr>
+
+    </table>
+
+    <!-- Paginação -->
+    <mat-paginator [length]="totalElements" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]"
+        (page)="onPaginateChange($event)">
+    </mat-paginator>
+
+</div>
